@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run ON THE BOARD as root, after installing PXVIRT (docs/02).
+# Run ON THE BOARD as root, after installing Proxmox (docs/02).
 # Switches Armbian networking from netplan/systemd-networkd/resolved to
 # ifupdown2 with a Proxmox bridge vmbr0 and a static address.
 #
@@ -23,7 +23,7 @@ LOG=/root/net-switch.log
 exec >>"$LOG" 2>&1
 echo "=== $(date) start: $IFACE -> vmbr0 $ADDR gw $GW"
 
-B=/root/pre-pxvirt-backup
+B=/root/pre-network-switch-backup
 mkdir -p "$B"
 [ -e "$B/interfaces" ] || cp -a /etc/network/interfaces "$B/interfaces" 2>/dev/null
 [ -e "$B/resolv.conf.link" ] || readlink /etc/resolv.conf > "$B/resolv.conf.link"
