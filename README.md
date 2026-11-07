@@ -10,7 +10,7 @@ Written so that I or an AI coding agent can redo it from scratch.
 |---|---|
 | OS | Armbian 26.8.x, Debian 13 trixie, mainline kernel 6.18 (`current`) |
 | Proxmox | `pve-manager 9.2.20`, QEMU 11.1 from `download.proxmox.com` `pve-no-subscription`, no Proxmox kernel |
-| Node name | `pvrk3588` (`pvrk3588.lan`) |
+| Node name | `pvr6c` (`pvr6c.lan`) |
 | Network | static `192.168.x.y/24` on bridge `vmbr0` (port `lan1`), gateway/DNS `192.168.x.1` |
 | Web UI | `https://192.168.x.y:8006`, user `root`, realm "Linux PAM" |
 

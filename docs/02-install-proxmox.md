@@ -23,14 +23,14 @@ Edit `/etc/hosts` as follows:
 
 ```
 127.0.0.1       localhost
-192.168.x.y     pvrk3588.lan pvrk3588
+192.168.x.y     pvr6c.lan pvr6c
 ::1             localhost ip6-localhost ip6-loopback
 ```
 
 (Remove the hostname from the `::1` line.) Check that both of these print the expected values:
 
 ```bash
-hostname -f     # pvrk3588.lan
+hostname -f     # pvr6c.lan
 hostname -i     # 192.168.x.y only
 ```
 
