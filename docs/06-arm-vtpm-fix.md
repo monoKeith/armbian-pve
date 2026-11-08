@@ -27,7 +27,10 @@ kvm -device help | grep -i tpm
 line in `/usr/share/perl5/PVE/QemuServer.pm` (`add_tpm_device`) to choose
 the device by VM architecture: `tpm-tis-device` on aarch64, `tpm-tis`
 otherwise. It's idempotent, checks the result with `perl -c` (and restores the
-original if that fails), and reloads `pvedaemon`, `pveproxy` and `pvescheduler`.
+original if that fails), and **restarts** `pvedaemon`, `pveproxy` and
+`pvescheduler`. A reload isn't enough: `qm start` on the CLI picks up the fix,
+but starting from the web UI goes through `pvedaemon` and keeps failing with the
+old error until it's restarted.
 
 ```bash
 # from the Mac

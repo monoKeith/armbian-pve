@@ -35,5 +35,10 @@ fi
 rm -f "$F.orig-tpm"
 echo "pve-arm-tpm-fix: patched $F"
 
-# Running daemons have the old code loaded.
-systemctl reload-or-restart pvedaemon pveproxy pvescheduler 2>/dev/null || true
+# Running daemons keep the old code loaded until restarted. A reload is not
+# enough: the web UI's VM start goes through pvedaemon and kept failing.
+if systemctl restart pvedaemon pveproxy pvescheduler; then
+  echo "pve-arm-tpm-fix: restarted pvedaemon pveproxy pvescheduler"
+else
+  echo "pve-arm-tpm-fix: restart failed, run: systemctl restart pvedaemon pveproxy pvescheduler" >&2
+fi
