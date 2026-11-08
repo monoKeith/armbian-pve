@@ -1,0 +1,4 @@
+// /etc/apt/apt.conf.d/99pve-arm-tpm-fix
+// Re-apply the arm64 vTPM device fix after any dpkg run (e.g. qemu-server
+// upgrades). The script is a no-op when already patched.
+DPkg::Post-Invoke { "if [ -x /usr/local/sbin/pve-arm-tpm-fix ]; then /usr/local/sbin/pve-arm-tpm-fix || true; fi"; };

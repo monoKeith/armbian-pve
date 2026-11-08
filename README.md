@@ -21,6 +21,7 @@ Written so that I or an AI coding agent can redo it from scratch.
 3. [Switch networking to an ifupdown2 bridge](docs/03-network-bridge.md)
 4. [Rename the node](docs/04-rename-node.md)
 5. [Rockchip: pin VMs to one type of CPU core](docs/05-rockchip-cpu-affinity.md)
+6. [Fix vTPM on ARM VMs](docs/06-arm-vtpm-fix.md) (qemu-server uses the x86 `tpm-tis` device)
 
 ## Repo layout
 
@@ -30,6 +31,8 @@ config.sh             shared settings for the flashing scripts (image flavour, l
 2_download.sh         download + verify Armbian image and RK3588 loader into ./downloads
 3_flash_emmc.sh       write image to eMMC over USB in maskrom mode
 scripts/pve-network-switch.sh   on the board: netplan/networkd -> ifupdown2 vmbr0, with auto-rollback
+scripts/pve-arm-tpm-fix.sh      on the board: make qemu-server use tpm-tis-device for ARM VMs
+scripts/99pve-arm-tpm-fix       apt hook that re-applies the TPM fix after upgrades
 docs/                 step-by-step guide
 ```
 
